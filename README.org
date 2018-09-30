@@ -12,18 +12,22 @@ git clone  https://github.com/oneyb/template-mysensors-platformio.git some-proje
 cd some-project-name
 pio run -t upload
 #+END_SRC
-Of course that may build and upload but I doubt it will just work.
+Of course that may build and upload but I doubt it will just work. This stuff is a little complex.
 
 For less popular external libraries, create a ~lib/~ directory, and put them in there. Platformio will pick them up.
 
 
 * Further help
-  - consider this ansible playbook: https://github.com/oneyb/rpi-ap-ha/blob/master/install-platformio.yaml
-  - Compile and upload firmware (assuming you have the [[https://docs.platformio.org/en/latest/faq.html#faq-udev-rules][udev rules]] set up and a USB plugged in with an upload_port of ~/dev/ttyACM0~, otherwise adjust [[file:platformio.ini][platformio.ini]]):
-    - ~pio run -t upload~
-  - Check the output of your sensor on your MySensors gateway+controller
-  - Be happy if it works. Accept the challenge if it doesn't ;).
-  - Start somewhere:
+  - check your devices that are plugged in:
+#+BEGIN_SRC shell
+ls -al /dev/tty*
+#+END_SRC
+    - consider using this ansible playbook: https://github.com/oneyb/rpi-embed-dev/blob/master/install-platformio.yaml
+  - Attempt to compile and upload firmware (assuming you have the [[https://docs.platformio.org/en/latest/faq.html#faq-udev-rules][udev rules]] set up and a USB plugged in with an upload_port of ~/dev/ttyACM0~, otherwise adjust [[file:platformio.ini][platformio.ini]]):
+#+BEGIN_SRC shell
+pio run -t upload
+#+END_SRC
+  - Start somewhere to help yourself:
     - https://docs.platformio.org/en/latest
     - https://www.mysensors.org/about/iot
 
@@ -31,7 +35,7 @@ For less popular external libraries, create a ~lib/~ directory, and put them in 
 ** Examples to be added to [[platformio.ini]] 
    - [ ] include [[https://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flagshttps://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flags][build options]] which modify the ~presentation~ of sensors
    - [ ] cool examples of using [[https://docs.platformio.org/en/latest/projectconf/advanced_scripting.html][advanced platformio scripting]]
-   - [ ] Setting pins of sensors depending on detected sensor
+   - [ ] Setting pins of sensors depending on detected sensor using above options
   
 ** Modifications of [[src/mysensor-code.cc]] 
    - [ ] accept [[https://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flagshttps://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flags][build options]] to modify the ~presentation~ of sensors
