@@ -1,0 +1,37 @@
+* A starting place for working with platformio and mysensors
+A great environment for developing one's own sensors:
+  - https://www.mysensors.org
+  
+A great environment for IoT development:
+  - https://www.platformio.org
+
+* Getting it working
+Do you have everything hooked up?
+#+BEGIN_SRC shell
+git clone  https://github.com/oneyb/template-mysensors-platformio.git some-project-name
+cd some-project-name
+pio run -t upload
+#+END_SRC
+Of course that may build and upload but I doubt it will just work.
+
+For less popular external libraries, create a ~lib/~ directory, and put them in there. Platformio will pick them up.
+
+
+* Further help
+  - consider this ansible playbook: https://github.com/oneyb/rpi-ap-ha/blob/master/install-platformio.yaml
+  - Compile and upload firmware (assuming you have the [[https://docs.platformio.org/en/latest/faq.html#faq-udev-rules][udev rules]] set up and a USB plugged in with an upload_port of ~/dev/ttyACM0~, otherwise adjust [[file:platformio.ini][platformio.ini]]):
+    - ~pio run -t upload~
+  - Check the output of your sensor on your MySensors gateway+controller
+  - Be happy if it works. Accept the challenge if it doesn't ;).
+  - Start somewhere:
+    - https://docs.platformio.org/en/latest
+    - https://www.mysensors.org/about/iot
+
+* To be written
+** Examples to be added to [[platformio.ini]] 
+   - [ ] include [[https://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flagshttps://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flags][build options]] which modify the ~presentation~ of sensors
+   - [ ] cool examples of using [[https://docs.platformio.org/en/latest/projectconf/advanced_scripting.html][advanced platformio scripting]]
+   - [ ] Setting pins of sensors depending on detected sensor
+  
+** Modifications of [[src/mysensor-code.cc]] 
+   - [ ] accept [[https://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flagshttps://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flags][build options]] to modify the ~presentation~ of sensors
