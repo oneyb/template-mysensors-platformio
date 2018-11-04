@@ -68,36 +68,56 @@ uint8_t clockSwitchCount = 0;
 // string device_version = 0.1;
 
 
-/**********************************/
-/********* IMPLEMENTATION *********/
-/**********************************/
-void setup()
-{
-  // Serial.begin(115200);
-  // Serial.println("HTU21D Example!");
-  // analogReference(INTERNAL);
-  myHumidity.begin();
+#include <Arduino.h>
+// #include <SPI.h>
 
-}
+// Pin 13 has an LED_BUILTIN connected on most Arduino boards.
+// give it a name:
+// int LED_BUILTIN = 13;
 
-void presentation()
-{
-  // Send the sketch version information to the gateway and Controller
-  sendSketchInfo("template", "0.1");
-  // sendSketchInfo(device_id, device_version);
+// the setup routine runs once when you press reset:
+void setup() {                
+  // initialize the digital pin as an output.
+  pinMode(LED_BUILTIN, OUTPUT);     
+};
 
-  // Register all sensors to gateway (they will be created as child devices)
-  present(CHILD_ID_VOLTAGE, S_MULTIMETER);
-  metric = getControllerConfig().isMetric;
-}
+// the loop routine runs over and over again forever:
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED_BUILTIN on (HIGH is the voltage level)
+  delay(1000);               // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED_BUILTIN off by making the voltage LOW
+  delay(1000);               // wait for a second
+};
+// /**********************************/
+// /********* IMPLEMENTATION *********/
+// /**********************************/
+// void setup()
+// {
+//   // Serial.begin(115200);
+//   // Serial.println("Example!");
+//   // analogReference(INTERNAL);
+//   myHumidity.begin();
+
+// }
+
+// void presentation()
+// {
+//   // Send the sketch version information to the gateway and Controller
+//   sendSketchInfo("template", "0.1");
+//   // sendSketchInfo(device_id, device_version);
+
+//   // Register all sensors to gateway (they will be created as child devices)
+//   present(CHILD_ID_VOLTAGE, S_MULTIMETER);
+//   metric = getControllerConfig().isMetric;
+// }
 
 
-void loop()
-{
+// void loop()
+// {
 
 
-  sleep(SLEEP_TIME);
+//   sleep(SLEEP_TIME);
 
 
-}
+// }
 
