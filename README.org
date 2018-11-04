@@ -6,15 +6,24 @@ A great environment for IoT development:
   - https://www.platformio.org
 
 * Getting it working
-Do you have everything hooked up?
-#+BEGIN_SRC shell
-git clone  https://github.com/oneyb/template-mysensors-platformio.git some-project-name
-cd some-project-name
-pio run -t upload
-#+END_SRC
+- Do you have platformio installed?
+  #+BEGIN_SRC shell
+  # Still python2-only
+  pip install plaformio
+  #+END_SRC
+Platformio is the single requirement. Unfortunately, version 3.5.3 depends in
+a version of requests that has a vulnerability. Consider a virtual environment
+for it please. Later versions may introduce dependency-hell.
+
+- Do you have everything hooked up?
+  #+BEGIN_SRC shell
+  git clone  https://github.com/oneyb/template-mysensors-platformio.git some-project-name
+  cd some-project-name
+  pio run -t upload
+  #+END_SRC
 Of course that may build and upload but I doubt it will just work. This stuff is a little complex.
 
-For less popular external libraries, create a ~lib/~ directory, and put them in there. Platformio will pick them up.
+For less popular external libraries that platformio doesn't find, create a ~lib/~ directory, and put them in there. Platformio will pick them up.
 
 
 * Further help
@@ -37,5 +46,5 @@ pio run -t upload
    - [ ] cool examples of using [[https://docs.platformio.org/en/latest/projectconf/advanced_scripting.html][advanced platformio scripting]]
    - [ ] Setting pins of sensors depending on detected sensor using above options
   
-** Modifications of [[src/mysensor-code.cc]] 
+** Modifications of [[file:src/mysensor-code.cc][src/mysensor-code.cc]] 
    - [ ] accept [[https://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flagshttps://docs.platformio.org/en/latest/projectconf/section_env_build.html#projectconf-dynamic-build-flags][build options]] to modify the ~presentation~ of sensors
